@@ -52,5 +52,9 @@ class Authorization{
 		     alert('Ha salido correctamente');
 		    window.location='users/login';
 		    </script>";
-	}	
+	}
+
+	public function test(){
+		
+	}
 }
