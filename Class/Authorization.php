@@ -54,7 +54,11 @@ class Authorization{
 		    </script>";
 	}
 
+<<<<<<< HEAD
 	public function prueba(){
+=======
+	public function test(){
+>>>>>>> b1b2b522b20c297f482628c2e538ed3630f6dcb7
 		
 	}
 }
