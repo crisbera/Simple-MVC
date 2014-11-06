@@ -3,6 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 <title>Manejo de usuarios</title>
-<base href="http://localhost/app/">
+<base href="http://<?php echo $_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF']; ?>">
 </head>
 <body>

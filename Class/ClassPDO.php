@@ -35,7 +35,7 @@ class ClassPDO{
   * @return void
   */
 	public function __construct(){
-		$this->dsn = 'mysql:host=localhost;dbname=test';
+		$this->dsn = 'mysql:host=localhost;dbname=app';
 		$this->username = 'root';
 		$this->password = '';
 		$this->connection();
