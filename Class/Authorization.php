@@ -13,14 +13,21 @@ class Authorization{
 	 * Método que sirve para comprobar si el usuario inicio sesión en el sistema
 	 * @return  void no regresa ningún valor
 	 */
+
 	static function logged(){
 		session_start();
-		if(!$_SESSION['logged']){
-		    header("Location: http://localhost/app/users/login");
+		if(!isset($_SESSION['logged'])){
+		    $path = $_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF'];
+		    $path = explode('/', $path);
+		    array_pop($path);
+		    $url = implode("/", $path);
+
+		    header("Location: http://".$url.DS."users".DS."login");
 		    exit;
 		}
 	}
 
+	
 	/**
 	 * Método login
 	 * 
@@ -52,13 +59,5 @@ class Authorization{
 		     alert('Ha salido correctamente');
 		    window.location='users/login';
 		    </script>";
-	}
-
-<<<<<<< HEAD
-	public function prueba(){
-=======
-	public function test(){
->>>>>>> b1b2b522b20c297f482628c2e538ed3630f6dcb7
-		
 	}
 }
