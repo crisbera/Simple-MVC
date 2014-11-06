@@ -3,18 +3,16 @@ define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', dirname(__FILE__) . DS);
 define('APP_PATH', ROOT);
 
-function __autoload($classname) {
-    $filename = "class/". $classname .".php";
+function __autoload($className) {
+    $filename = APP_PATH."Class".DS. $className .".php";
     include_once($filename);
 }
 
 $error = new Errors();
 
-//include_once APP_PATH . DS .'Class' . DS . 'pdo.php';
-include_once APP_PATH . DS .'Controllers' . DS . 'AppController.php';
-include_once APP_PATH . DS .'Class' . DS . 'password.php';
 
-//print_r(get_required_files());
+include_once APP_PATH . DS .'Controllers' . DS . 'AppController.php';
+
 
 if (isset($_GET['url'])) {
 	$url = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);
@@ -22,12 +20,13 @@ if (isset($_GET['url'])) {
 	$url = array_filter($url);
 
 	$controller = array_shift($url);
+	$controller = ucwords($controller);
 	$action = array_shift($url);
 	$args = $url;
 }
 
 if(!isset($controller)){
-	$controller = "users";
+	$controller = "Users";
 }
 
 if (!isset($action)) {
@@ -38,16 +37,16 @@ if(empty($args)){
 	$args = array(0 => null);
 }
 
-if($action=="login" or $action=="index"){
+if($action=="login"){
 	
 }else{
 	Authorization::logged();
 }
 
-$path =   APP_PATH."controllers". DS .$controller."Controller.php";
-$view =   APP_PATH."views". DS .$controller. DS .$action.".php";
-$header = APP_PATH."views". DS ."layouts". DS ."default". DS ."header.php";
-$footer = APP_PATH."views".DS."layouts". DS ."default". DS. "footer.php";
+$path =   APP_PATH.DS."Controllers". DS .$controller."Controller.php";
+$view =   APP_PATH.DS."Views". DS .$controller. DS .$action.".php";
+$header = APP_PATH.DS."Views". DS ."Layouts". DS ."default". DS ."header.php";
+$footer = APP_PATH.DS."Views".DS."Layouts". DS ."default". DS. "footer.php";
 
 if(file_exists($path)){
 	include_once($path);
